@@ -122,7 +122,7 @@ class ViewController: UITableViewController, CreateNewsDelegate, UICollectionVie
     }
     
     @objc private func refresh() {
-        news = repository.syncGetAll() ?? [News]()
+        news = (repository as! NewsRepository).getNews() ?? [News]()
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }

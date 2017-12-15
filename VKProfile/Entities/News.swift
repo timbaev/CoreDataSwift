@@ -17,14 +17,16 @@ class News: Storable {
     @objc var likeCount: Int
     @objc var commentCount: Int
     @objc var respostCount: Int
+    @objc var date: Date
     
-    init(id: Int = 0, text: String, image: UIImage?, likeCount: Int, commentCount: Int, respostCount: Int) {
+    init(id: Int = 0, text: String, image: UIImage?, likeCount: Int, commentCount: Int, respostCount: Int, date: Date = Date()) {
         self.id = id
         self.text = text
         self.image = image
         self.likeCount = likeCount
         self.commentCount = commentCount
         self.respostCount = respostCount
+        self.date = date
     }
     
     convenience init(from newsManaged: NewsManaged) {
@@ -32,7 +34,7 @@ class News: Storable {
         if let imageData = newsManaged.image {
             image = UIImage(data: imageData)
         }
-        self.init(text: newsManaged.text, image: image, likeCount: Int(newsManaged.likeCount), commentCount: Int(newsManaged.commentCount), respostCount: Int(newsManaged.repostCount))
+        self.init(text: newsManaged.text, image: image, likeCount: Int(newsManaged.likeCount), commentCount: Int(newsManaged.commentCount), respostCount: Int(newsManaged.repostCount), date: newsManaged.date)
     }
     
     func toManagedObject(in context: NSManagedObjectContext) -> NSManagedObject {
@@ -41,6 +43,7 @@ class News: Storable {
         newsManaged.likeCount = Int64(likeCount)
         newsManaged.commentCount = Int64(commentCount)
         newsManaged.repostCount = Int64(respostCount)
+        newsManaged.date = date
         
         var imageData: Data?
         if let image = image {

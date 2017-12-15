@@ -22,5 +22,6 @@ extension NewsManaged {
     @NSManaged public var repostCount: Int64
     @NSManaged public var text: String
     @NSManaged public var user: UserManaged
+    @NSManaged public var date: Date
 
 }
