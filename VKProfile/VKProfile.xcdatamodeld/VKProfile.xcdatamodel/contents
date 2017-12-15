@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="NewsManaged" representedClassName="NewsManaged" syncable="YES">
+        <attribute name="commentCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="likeCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="repostCount" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="UserManaged" inverseName="news" inverseEntity="UserManaged" syncable="YES"/>
+    </entity>
+    <entity name="UserManaged" representedClassName="UserManaged" syncable="YES">
+        <attribute name="age" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="city" attributeType="String" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" attributeType="String" syncable="YES"/>
+        <attribute name="surname" attributeType="String" syncable="YES"/>
+        <relationship name="news" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NewsManaged" inverseName="user" inverseEntity="NewsManaged" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="NewsManaged" positionX="-54" positionY="54" width="128" height="133"/>
+        <element name="UserManaged" positionX="-315" positionY="36" width="128" height="163"/>
+    </elements>
+</model>
