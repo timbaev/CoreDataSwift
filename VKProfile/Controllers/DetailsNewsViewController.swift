@@ -13,25 +13,12 @@ class DetailsNewsViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     
-    var newsID: Int!
-    var repository: Repository!
+    var news: News!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repository = BaseRepository()
         
-        repository.asyncSearch(id: newsID, type: News.self) { [weak self] (resultNews) in
-            guard let selfStrong = self else { return }
-            if let news = resultNews {
-                DispatchQueue.main.async {
-                    selfStrong.textLabel.text = news.text
-                    if let newsImage = news.image {
-                        selfStrong.photoImageView.image = newsImage
-                    } else {
-                        selfStrong.photoImageView.isHidden = true
-                    }
-                }
-            }
-        }
+        textLabel.text = news.text
+        photoImageView.image = news.image
     }
 }

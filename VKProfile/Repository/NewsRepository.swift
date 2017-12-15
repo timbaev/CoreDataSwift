@@ -10,10 +10,6 @@ import Foundation
 
 class NewsRepository: BaseRepository {
     
-    override init() {
-        super.init()
-    }
-    
     func getNews() -> [News]? {
         guard let currentUserManaged = UserRepository.currentUser, let newsSet = currentUserManaged.news else { return nil }
         return newsSet.map { News(from: $0) }

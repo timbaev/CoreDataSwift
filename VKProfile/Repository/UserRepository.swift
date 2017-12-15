@@ -13,10 +13,6 @@ class UserRepository: BaseRepository {
     
     static var currentUser: UserManaged?
     
-    override init() {
-        super.init()
-    }
-    
     func check(with email: String, and password: String) -> UserManaged? {
         let viewContext = CoreDataManager.instance.viewContext
         let request: NSFetchRequest<UserManaged> = UserManaged.fetchRequest()

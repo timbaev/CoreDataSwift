@@ -14,7 +14,5 @@ protocol Repository {
     func asyncSave<T: Storable>(with: T, completionBlock: @escaping (Bool) -> ())
     func syncGetAll<T: Storable>() -> [T]?
     func asyncGetAll<T: Storable>(completionBlock: @escaping ([T]?) -> ())
-    func syncSearch<T: Storable>(id: Int, type: T.Type) -> T?
-    func asyncSearch<T: Storable>(id: Int, type: T.Type, completionBlock: @escaping (T?) -> ())
     
 }

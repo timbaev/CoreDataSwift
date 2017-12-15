@@ -237,7 +237,7 @@ class ViewController: UITableViewController, CreateNewsDelegate, UICollectionVie
             noteVC.createNewsDelegate = self
         } else if (segue.identifier == detailsNewsSegue) {
             let detailsNewsVC = segue.destination as! DetailsNewsViewController
-            detailsNewsVC.newsID = sender as! Int
+            detailsNewsVC.news = sender as! News
         }
     }
     
